@@ -34,7 +34,7 @@
         android:layout_height="44dp">
 
         <TextView
-            android:text="@string/display_rating"
+            android:text="@string/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewViewRating"
@@ -43,8 +43,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="@string/rating"
+            android:inputType="number"
             android:ems="10"
             android:id="@+id/editTextEnterRating"
             android:layout_weight="1"

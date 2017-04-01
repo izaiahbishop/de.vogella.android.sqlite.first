@@ -65,9 +65,10 @@ import android.util.Log;
         /*
         * This statement defines a database creation sql statement.
         */
+        //Added COLUMN_RATING to DATABASE_CREATE
         private static final String DATABASE_CREATE = "create table "
                 + TABLE_COMMENTS + "( " + COLUMN_ID + " integer primary key autoincrement, "
-                + COLUMN_COMMENT + " text not null" + COLUMN_RATING + " rating entered here);";
+                + COLUMN_COMMENT + " text not null," + COLUMN_RATING + " text);";
 
         /*
         * This method makes a method call to the SQLiteOpenHelper (super). Passes in the context
