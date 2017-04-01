@@ -51,15 +51,23 @@ import android.util.Log;
         * We keep it as a constant in case the variable (table) integer 1 ever changes.
         * We would only have to change this one line of code instead of all code where this variable is referenced.
         */
-        private static final int DATABASE_VERSION = 1;
+        //Incremented the version of the database so Android deletes the old one and creates a new one with our new field
+        private static final int DATABASE_VERSION = 2;
+
+
+        /*
+        * This variable serves as a constant for the COLUMN_RATING column.
+        * We keep it as a constant in case the variable (table) name "rating" ever changes, or is moved around in the table.
+        * We would only have to change this one line of code instead of all code where this variable is referenced.
+        */
+        public static final String COLUMN_RATING = "rating";
 
         /*
         * This statement defines a database creation sql statement.
         */
         private static final String DATABASE_CREATE = "create table "
-                + TABLE_COMMENTS + "( " + COLUMN_ID
-                + " integer primary key autoincrement, " + COLUMN_COMMENT
-                + " text not null);";
+                + TABLE_COMMENTS + "( " + COLUMN_ID + " integer primary key autoincrement, "
+                + COLUMN_COMMENT + " text not null" + COLUMN_RATING + " rating entered here);";
 
         /*
         * This method makes a method call to the SQLiteOpenHelper (super). Passes in the context

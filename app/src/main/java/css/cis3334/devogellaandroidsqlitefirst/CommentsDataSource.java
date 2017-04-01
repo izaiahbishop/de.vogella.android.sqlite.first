@@ -40,9 +40,10 @@ public class CommentsDataSource {
         dbHelper.close();
     }
 
-    public Comment createComment(String comment) {
+    public Comment createComment(String comment, String rating) {           //Added String rating as a parameter
         ContentValues values = new ContentValues();                         // Create a new ContentValue Object
-        values.put(MySQLiteHelper.COLUMN_COMMENT, comment);                 // Insert a comment into the COLUMN_COMMENT table column using MYSQLiteHelper
+        values.put(MySQLiteHelper.COLUMN_COMMENT, comment);                 // Insert a comment into the COLUMN_COMMENT field using MYSQLiteHelper
+        values.put(MySQLiteHelper.COLUMN_RATING, rating);                   // Insert rating into the COLUMN_RATING field using MYSQLiteHelper
         long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
                 values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,       // Set the cursor
@@ -64,8 +65,8 @@ public class CommentsDataSource {
     public List<Comment> getAllComments() {
         List<Comment> comments = new ArrayList<Comment>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-                allColumns, null, null, null, null, null);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,       //Modified to return all database fields
+                null, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -82,6 +83,7 @@ public class CommentsDataSource {
         Comment comment = new Comment();
         comment.setId(cursor.getLong(0));
         comment.setComment(cursor.getString(1));
+        comment.setRating(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_RATING)));      // initialize rating attribute
         return comment;
     }
 }

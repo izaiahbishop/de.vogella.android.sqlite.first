@@ -8,6 +8,25 @@ package css.cis3334.devogellaandroidsqlitefirst;
 public class Comment {
     private long id;
     private String comment;
+    private String rating;      //Created new attribute for the rating
+
+    /*
+    * This method returns the rating of the comment
+    *
+    * @return Returns the rating as a String
+     */
+    public String getRating() {
+        return rating;
+    }
+
+    /*
+    * This method sets the rating of the comment to the parameter
+    *
+    * @param String id This is the rating that the comment will be set to
+     */
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 
     /*
     * This method returns the id of the comment
@@ -48,6 +67,6 @@ public class Comment {
     // Will be used by the ArrayAdapter in the ListView
     @Override
     public String toString() {
-        return comment;
+        return comment + " " + rating;      //added rating to toString
     }
 }

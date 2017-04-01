@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class TestDatabaseActivity extends ListActivity  {
@@ -37,12 +39,13 @@ public class TestDatabaseActivity extends ListActivity  {
         @SuppressWarnings("unchecked")
         ArrayAdapter<Comment> adapter = (ArrayAdapter<Comment>) getListAdapter();
         Comment comment = null;
+        EditText etRating = (EditText) findViewById(R.id.editTextEnterRating);  //Rating for the comment
         switch (view.getId()) {
             case R.id.add:
                 String[] comments = new String[] { "Cool", "Very nice", "Hate it" };
                 int nextInt = new Random().nextInt(3);
                 // save the new comment to the database
-                comment = datasource.createComment(comments[nextInt]);
+                comment = datasource.createComment(comments[nextInt], etRating.getText().toString());  //Passing the rating as a string
                 adapter.add(comment);
                 break;
             case R.id.delete:
