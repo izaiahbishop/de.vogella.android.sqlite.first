@@ -46,8 +46,8 @@ public class CommentsDataSource {
         values.put(MySQLiteHelper.COLUMN_RATING, rating);                   // Insert rating into the COLUMN_RATING field using MYSQLiteHelper
         long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
                 values);
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,       // Set the cursor
-                allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,       // Modified to show all fields
+                null, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();                                               //  Cursor will move to the
         Comment newComment = cursorToComment(cursor);
